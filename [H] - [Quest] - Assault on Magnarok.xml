@@ -94,7 +94,10 @@
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
 			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
 			<TurnIn QuestId="36697" QuestName="Assault on Magnarok" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
-			<TurnIn QuestId="38177" QuestName="Missive: Assault on Magnarok" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
+			<If Condition="HasQuest(38177) &amp;&amp; IsQuestCompleted(38177)" >
+				<TurnIn QuestId="38177" QuestName="Missive: Assault on Magnarok" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
+			</If>
+
 		</If>
 		<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
 	</QuestOrder>
