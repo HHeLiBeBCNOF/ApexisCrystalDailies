@@ -27,9 +27,19 @@
 		<Mob Name="Direfang Prowler" Entry="86931" />
 		<Mob Name="Marsh Anaconda" Entry="87039" />
 		<Mob Name="Deadly Gloomstalker" Entry="86773" />
+		<Mob Name="Ironhide Bull" Entry="86731" />
 	</AvoidMobs>
 
 	<Blackspots>
+		<!-- Alliance Stronghold, can be an issue if you don't have certain FPs in Nagrand -->
+		<Blackspot X="3397.622" Y="5770.916" Z="37.64389" Radius="40"/>
+
+		<!-- Stolen Goods at top of a tower, no pathing available -->
+		<Blackspot X="3483.324" Y="6746.226" Z="42.41213" Radius="50" />
+
+		<!-- Mobs at top of tower cannot be pathed to -->
+		<Blackspot X="3654.065" Y="6749.59" Z="50.23491" Radius="50" />
+		<Blackspot X="3632.504" Y="6912.496" Z="58.84646" Radius="50"/>
 		<Blackspot X="3522.76" Y="6739.552" Z="9.27257" />
 	</Blackspots>
 
@@ -58,9 +68,9 @@
 
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Beginning Apex Daily: Mok'gol Watchpost" LogColor="Cyan" />
-		<While Condition="HasQuest(36693) &amp;&amp; !IsQuestCompleted(36693)" >
+		<While Condition="(HasQuest(36693) &amp;&amp; !IsQuestCompleted(36693)) || (HasQuest(38181) &amp;&amp; !IsQuestCompleted(38181))" >
 
-			<CustomBehavior File="InteractWith" MobId="237263" ObjectType="GameObject" QuestId="36693" PreInteractMountStrategy="DismountOrCancelShapeshift" InteractByQuestFrameDisposition="Accept" >
+			<CustomBehavior File="InteractWith" >
 				<HuntingGrounds>
 					<Hotspot X="3469.78" Y="6861.467" Z="3.070986" />
 					<Hotspot X="3537.745" Y="6747.625" Z="6.699275" />
@@ -68,18 +78,55 @@
 					<Hotspot X="3602.515" Y="6838.987" Z="16.88023" />
 					<Hotspot X="3540.747" Y="6901.51" Z="20.08891" />
 				</HuntingGrounds>
+				<PursuitList>
+					<PursueUnit Id="87234" PursueWhen="UNIT.IsAlive" Priority="300"/>		<!-- Boss - Brutag Grimblade -->
+					<PursueUnit Id="86959" PursueWhen="UNIT.IsAlive" Priority="300"/>		<!-- Boss - Karosh Blackwind -->
+					<PursueUnit Id="87239" PursueWhen="UNIT.IsAlive" Priority="250"/>		<!-- Boss - Krahl Deadeye - Summoned with Secret Meeting Notes - Ranged, dispatch him first -->
+					<PursueUnit Id="87344" PursueWhen="UNIT.IsAlive" Priority="249"/>		<!-- Boss - Gortag Steelgrip - Summoned with Secret Meeting Notes -->
+					<PursueUnit Id="87584" PursueWhen="UNIT.IsAlive" Priority="10"/>		<!-- Normal - Mok'gol Pack-Leader - Drops Secret Meeting Details for summoning Gortrag and Karosh -->
+					<PursueUnit Id="86658" PursueWhen="UNIT.IsAlive" Priority="10"/>		<!-- Normal - Mok'gol Pack-Leader - Drops Secret Meeting Details for summoning Gortrag and Karosh -->
+					<PursueUnit Id="86992" Priority="50" />									<!-- Object - 6% Completion - Pile of Grenades - This object is considered an NPC for some reason -->
+					<PursueUnit Id="87524" Priority="50" />									<!-- Object - Needed for achievement -  Warsong Relics -This object is considered an NPC for some reason -->
+					<PursueUnit Id="87264" Priority="20" />									<!-- Object - % Completion - Warsong Totem - This object is considered an NPC for some reason -->
+					<PursueGameObject Id="237227" Priority="20" />							<!-- Object - Highmaul Reliquary -->
+					<PursueGameObject Id="237263" Priority="20" />							<!-- Object - 4% Completion - Stolen Goods -->
+					<PursueUnit Id="83049" PursueWhen="UNIT.IsAlive" Priority="10" />		<!-- Normal - 3% Completion - Packleader Vor'gash - Chance to drop some rare BOEs -->
+					<PursueUnit Id="86659" PursueWhen="UNIT.IsAlive" />						<!-- Normal - 2% Completion - Mok'gol Wolfsong -->
+					<PursueUnit Id="72571" PursueWhen="UNIT.IsAlive" />						<!-- Normal - 1% Completion - Mok'gol Brutalizer -->
+					<PursueUnit Id="86657" PursueWhen="UNIT.IsAlive" />						<!-- Normal - 1% Completion - Mok'gol Grunt -->
+				</PursuitList>
 			</CustomBehavior>			
 		</While>
 
 		<!-- We're done, now lets turn them in! -->
-		<If Condition="HasQuest(36693) &amp;&amp; IsQuestCompleted(36693)" >
-			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
-			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
+		<While Condition="(HasQuest(36693) &amp;&amp; IsQuestCompleted(36693)) || (HasQuest(38181) &amp;&amp; IsQuestCompleted(38181))" >
+			<While Condition="(IsQuestCompleted(34378) || IsQuestCompleted(34586)) &amp;&amp; Me.ZoneId !=  7004" >
+				<!-- /// Garrison Hearthstone /// -->
+				<If Condition="!HasItem(110560)" >
+					<CustomBehavior File="RunCode" Code="Logging.Write(System.Windows.Media.Colors.DeepSkyBlue, &quot;[Azyul Navigator]: Please fetch your Garrison Hearthstone from your bank!  Automation of this will be added in the future.&quot;);" />
+					<CustomBehavior File="WaitTimer" WaitTime="600000" TerminateWhen="HasItem(110560)" />
+				</If>
+				<If Condition="Me.BagItems.FirstOrDefault(h => h.Entry == 110560).CooldownTimeLeft.TotalMilliseconds &gt; 400000" >
+					<CustomBehavior File="RunCode" Code="Logging.Write(System.Windows.Media.Colors.DeepSkyBlue, &quot;[Azyul Navigator]: Garrison Hearth is on cooldown!  Manually traveling to the Garrison...&quot;);" />
+				</If>
+				<If Condition="Me.BagItems.FirstOrDefault(h => h.Entry == 110560).CooldownTimeLeft.TotalMilliseconds &lt;= 400000" >
+					<CustomBehavior File="RunCode" Code="Logging.Write(System.Windows.Media.Colors.DeepSkyBlue, &quot;[Azyul Navigator]: Garrison Hearth is on cooldown! Waiting until it's off...&quot;);" />
+					<CustomBehavior File="WaitTimer" WaitTime="405000" TerminateWhen="Me.BagItems.FirstOrDefault(h => h.Entry == 110560).CooldownTimeLeft.TotalMilliseconds == 0" />
+				</If>
+				<If Condition="Me.BagItems.FirstOrDefault(h => h.Entry == 110560).CooldownTimeLeft.TotalMilliseconds == 0" >
+					<CustomBehavior File="RunCode" Code="Logging.Write(System.Windows.Media.Colors.DeepSkyBlue, &quot;[Azyul Navigator]: Using our Garrison Hearthstone!&quot;);" />
+					<CustomBehavior File="ForcedDismount" />
+					<While Condition="Me.ZoneId != 7004" >
+						<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560);" WaitTime="500" />
+						<CustomBehavior File="WaitTimer" WaitTime="50000" TerminateWhen="Me.Combat || !Me.IsCasting" />
+					</While>
+				</If>
+			</While>
 			<TurnIn QuestId="36693" QuestName="Assault on Mok'gol Watchpost" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
 			<If Condition="HasQuest(38181) &amp;&amp; IsQuestCompleted(38181)" >
 				<TurnIn QuestId="38181" QuestName="Missive: Assault on Mok'gol Watchpost" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
 			</If>		
-		</If>
-		<CustomBehavior File="HBRelogSkip" />
+		</While>
+		<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
 	</QuestOrder>
 </HBProfile>
