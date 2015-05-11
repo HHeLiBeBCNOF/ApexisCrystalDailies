@@ -2,11 +2,11 @@
 	<Name>[H - Quest] - Apex dailies</Name>
 	<MinLevel>100</MinLevel>
 	<MaxLevel>1001</MaxLevel>
-	
+
 	<TargetElites>false</TargetElites>
-	
+
 	<MinDurability>0.3</MinDurability>
-	
+
 	<MinFreeBagSlots>3</MinFreeBagSlots>  
 
 	<SellGrey>true</SellGrey>
@@ -34,7 +34,7 @@
 	<Vendors>
 	</Vendors>
 	<!-- Quest Overrides -->
-	
+
 	<QuestOrder IgnoreCheckpoints="true">
 		<!-- Apex Daily Quest IDs
 			36697 - Magnarok
@@ -44,12 +44,12 @@
 			36692 - Darktide Roost
 
 		-->
-		
+
 		<!-- Darktide Roost -->
 		<If Condition="HasQuest(36692) &amp;&amp; !IsQuestCompleted(36692)" >
-		
+
 			<CustomBehavior File="Message" Text="Beginning Apex Daily: Darktide Roost" LogColor="Cyan" />
-			
+
 			<SetGrindArea>
 				<GrindArea>
 					<Factions>1711 1712 16</Factions>
@@ -122,13 +122,13 @@
 			</SetGrindArea>
 			<GrindTo Condition="IsObjectiveComplete(1, 36692)" GoalText="Assaulting Darktide Roost!"  />
 		</If>
-	
-	<!-- We're done, now lets turn them in! -->
-	<If Condition="HasQuest(36692) &amp;&amp; IsQuestCompleted(36692)" >
-		<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
-		<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
-		<TurnIn QuestId="36692" QuestName="Assault on the Darktide Roost" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
-	</If>
-<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+
+		<!-- We're done, now lets turn them in! -->
+		<If Condition="HasQuest(36692) &amp;&amp; IsQuestCompleted(36692)" >
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
+			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
+			<TurnIn QuestId="36692" QuestName="Assault on the Darktide Roost" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
+		</If>
+		<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
 	</QuestOrder>
 </HBProfile>

@@ -2,11 +2,11 @@
 	<Name>[H - Quest] - Pillars of Fate</Name>
 	<MinLevel>100</MinLevel>
 	<MaxLevel>1001</MaxLevel>
-	
+
 	<TargetElites>false</TargetElites>
-	
+
 	<MinDurability>0.3</MinDurability>
-	
+
 	<MinFreeBagSlots>3</MinFreeBagSlots>  
 
 	<SellGrey>true</SellGrey>
@@ -33,11 +33,11 @@
 
 	<Vendors>
 	</Vendors>
-	
+
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Beginning Apex Daily: Pillars of Fate" LogColor="Cyan" />
 		<While Condition="HasQuest(36689) &amp;&amp; !IsQuestCompleted(36689)" >
-		
+
 
 			<CustomBehavior File="InteractWith" MobId="85977" ObjectType="GameObject" QuestId="36689" Range="1" >
 				<HuntingGrounds>
@@ -47,13 +47,13 @@
 				</HuntingGrounds>
 			</CustomBehavior>
 		</While>
-		
+
 		<!-- We're done, now lets turn them in! -->
 		<If Condition="HasQuest(36689) &amp;&amp; IsQuestCompleted(36689)" >
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
 			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
 			<TurnIn QuestId="36689" QuestName="Assault on Pillars of Fate" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
 		</If>
-<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+		<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
 	</QuestOrder>
 </HBProfile>

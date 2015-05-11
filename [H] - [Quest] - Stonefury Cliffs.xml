@@ -2,11 +2,11 @@
 	<Name>[H - Quest] - Stonefury Cliffs</Name>
 	<MinLevel>100</MinLevel>
 	<MaxLevel>1001</MaxLevel>
-	
+
 	<TargetElites>false</TargetElites>
-	
+
 	<MinDurability>0.3</MinDurability>
-	
+
 	<MinFreeBagSlots>3</MinFreeBagSlots>  
 
 	<SellGrey>true</SellGrey>
@@ -40,7 +40,7 @@
 
 	<Vendors>
 	</Vendors>
-	
+
 	<QuestOrder IgnoreCheckpoints="true">
 		<!-- Apex Daily Quest IDs
 			36697 - Magnarok
@@ -49,31 +49,31 @@
 			36669 - Stonefury Cliffs
 
 		-->
-		
+
 		<!-- Stonefury Cliffs -->
 		<If Condition="HasQuest(36669) &amp;&amp; !IsQuestCompleted(36669)" >
-		
+
 			<CustomBehavior File="Message" Text="Beginning Apex Daily: Stonefury Cliffs" LogColor="Cyan" />
 			<MoveTo X="7567.497" Y="4413.615" Z="49.54208" />
 
 			<While Condition="!IsObjectiveComplete(1, 36669)"> <!-- Keep looping through grabbing an acid trail buff and then killing with it until done -->
-				
+
 				<!-- Achievements
 					Breaker of Chains - 
 				-->
-				
+
 				<!-- Objects
 					<GameObject Name="Bloodmaul Cache" Entry="233005" X="7606.721" Y="4351.556" Z="48.43941" />
 					<GameObject Name="Prisoner Cage" Entry="233004" X="7510.702" Y="5177.095" Z="136.2054" />
 					<WoWUnit Name="Frostwolf Slave" Entry="78084" X="7602.258" Y="4587.251" Z="101.5422" />
 					<WoWItem Name="Shackle Key" Entry="113489" />
 				-->
-				
+
 				<!-- Mobs
 					<Vendor Name="Bloodmaul Taskmaster" Entry="77993" Type="Repair" X="7710.089" Y="4666.69" Z="40.68079" />
 					<Vendor Name="Bloodmaul Brute" Entry="77991" Type="Repair" X="7777.11" Y="4673.865" Z="41.60828" />
 				-->
-				
+
 				<!-- Work on the Breaker of Chains achieve -->
 				<While Condition="!IsAchievementCompleted(9533, 19) &amp;&amp; !IsObjectiveComplete(1, 36669)">
 					<CustomBehavior File="Message" Text="Opening prisoner cages!" LogColor="Cyan" />
@@ -89,7 +89,7 @@
 						</HuntingGrounds>
 					</CustomBehavior>
 				</While>
-				
+
 				<!-- Otherwise, let's just get done quick -->
 				<CustomBehavior File="Message" Text="Opening a Bloodmaul Cache" LogColor="Cyan" />
 				<CustomBehavior File="InteractWith" MobId="233005" QuestId="36669" InteractByQuestFrameDisposition="Accept" >
@@ -103,16 +103,16 @@
 						<Hotspot X="7741.537" Y="4656.857" Z="41.46461" />								
 					</HuntingGrounds>
 				</CustomBehavior>
-			<!-- Then do it again! -->
+				<!-- Then do it again! -->
 			</While>
 		</If>
-	
-	<!-- We're done, now lets turn them in! -->
-	<If Condition="HasQuest(36669) &amp;&amp; IsQuestCompleted(36669)" >
-		<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
-		<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
-		<TurnIn QuestId="36669" QuestName="Assault on the Stonefury Cliffs" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
-	</If>
-	<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+
+		<!-- We're done, now lets turn them in! -->
+		<If Condition="HasQuest(36669) &amp;&amp; IsQuestCompleted(36669)" >
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
+			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
+			<TurnIn QuestId="36669" QuestName="Assault on the Stonefury Cliffs" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
+		</If>
+		<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
 	</QuestOrder>
 </HBProfile>

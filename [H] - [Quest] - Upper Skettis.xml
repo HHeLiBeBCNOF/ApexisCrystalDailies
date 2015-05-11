@@ -2,11 +2,11 @@
 	<Name>[H - Quest] - Upper Skettis</Name>
 	<MinLevel>100</MinLevel>
 	<MaxLevel>1001</MaxLevel>
-	
+
 	<TargetElites>false</TargetElites>
-	
+
 	<MinDurability>0.3</MinDurability>
-	
+
 	<MinFreeBagSlots>3</MinFreeBagSlots>  
 
 	<SellGrey>true</SellGrey>
@@ -32,7 +32,7 @@
 
 	<Vendors>
 	</Vendors>
-	
+
 	<!-- 
 			Grind until you have a key:  <WoWItem Name="Talon Key" Entry="118701" />
 			Open up a ball and chain: <WoWUnit Name="Ball and Chain" Entry="89076" X="927.0988" Y="1222.393" Z="174.4507" />
@@ -46,11 +46,11 @@
 			
 	
 	-->
-	
+
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Beginning Apex Daily: Skettis" LogColor="Cyan" />
 		<While Condition="HasQuest(36688) &amp;&amp; !IsQuestCompleted(36688)" >
-			
+
 			<SetGrindArea>
 				<GrindArea>
 					<Factions>16</Factions>
@@ -61,24 +61,24 @@
 				</GrindArea>  
 			</SetGrindArea>
 			<GrindTo Condition="HasItem(118701) || IsObjectiveComplete(1, 36688)" GoalText="Obtaining Talon Key"  />
-			
+
 
 			<CustomBehavior File="InteractWith" MobId="89076" ObjectType="GameObject" QuestId="36688">
-					<HuntingGrounds>
-						<Hotspot X="932.6331" Y="1086.841" Z="179.2555" />
-						<Hotspot X="998.4891" Y="1569.703" Z="304.8752" />
-					</HuntingGrounds>
+				<HuntingGrounds>
+					<Hotspot X="932.6331" Y="1086.841" Z="179.2555" />
+					<Hotspot X="998.4891" Y="1569.703" Z="304.8752" />
+				</HuntingGrounds>
 			</CustomBehavior>
-			
+
 			<CustomBehavior File="InteractWith" MobId="89063" GossipOptions="1" X="919.0364" Y="1063.517" Z="178.7565" />	
 		</While>
-		
+
 		<!-- We're done, now lets turn them in! -->
 		<If Condition="HasQuest(36688) &amp;&amp; IsQuestCompleted(36688)" >
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
 			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
 			<TurnIn QuestId="36688" QuestName="Assault on Skettis" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
 		</If>
-<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+		<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
 	</QuestOrder>
 </HBProfile>

@@ -2,11 +2,11 @@
 	<Name>[H - Quest] - Assault on Magnarok</Name>
 	<MinLevel>100</MinLevel>
 	<MaxLevel>1001</MaxLevel>
-	
+
 	<TargetElites>false</TargetElites>
-	
+
 	<MinDurability>0.3</MinDurability>
-	
+
 	<MinFreeBagSlots>3</MinFreeBagSlots>  
 
 	<SellGrey>true</SellGrey>
@@ -25,7 +25,7 @@
 		<!-- Not an objective of the daily -->
 		<Mob Name="Ravenous Ironchewer" Entry="72347" /> 
 		<Mob Name="Rolling Shardback" Entry="82144" />
-		
+
 	</AvoidMobs>
 
 	<Blackspots>
@@ -38,16 +38,16 @@
 	<Vendors>
 	</Vendors>
 	<!-- Quest Overrides -->
-	
+
 	<QuestOrder IgnoreCheckpoints="true">
 
 		<!-- Magnarok -->
 		<If Condition="HasQuest(36697) &amp;&amp; !IsQuestCompleted(36697)" >
-		
+
 			<CustomBehavior File="Message" Text="Beginning Apex Daily: Assault on Magnarok" LogColor="Cyan" />
 			<MoveTo X="6945.081" y="3353.505" z="165.3839" />
 			<While Condition="!IsObjectiveComplete(1, 36697)"> <!-- Keep looping through grabbing an acid trail buff and then killing with it until done -->
-				
+
 				<!-- Find a Vicious Acidmaw w/ acid trail active and run him into other mobs -->
 				<CustomBehavior File="Message" Text="Finding a ride!" LogColor="Cyan" />
 				<CustomBehavior File="InteractWith" MobId="76905" AuraIdOnMob="174938" PreInteractMountStrategy="CancelShapeshift" >
@@ -61,40 +61,40 @@
 						<Hotspot X="7013.332" Y="3335.475" Z="164.8776" />
 					</HuntingGrounds>
 				</CustomBehavior>
-				
+
 				<!-- Acid Auras
 					Acid Trail (174938) - Aura present on Acidmaw's who can be ridden like a vehicle
 					Acid Trail (174958) - Aura present on you while riding an Acidmaw
 					Acid Slagged (174935) - Aura applied after running into a mob while riding an Acidmaw that increases damage by 50%
 				-->
-				
+
 				<If Condition="Me.HasAura(174958)" >
 					<SetGrindArea>
 						<GrindArea>
 							<Factions>14 16</Factions>
 							<Hotspots>
-							<Hotspot X="6949.311" Y="3289.713" Z="165.655" />
-							<Hotspot X="6929.372" Y="3117.919" Z="123.2541" />
-							<Hotspot X="7079.209" Y="3197.271" Z="156.2874" />
-							<Hotspot X="7245.572" Y="3050.336" Z="165.6132" />
-							<Hotspot X="7309.112" Y="3176.075" Z="143.3992" />
-							<Hotspot X="7164.64" Y="3277.109" Z="145.6098" />
-							<Hotspot X="7013.332" Y="3335.475" Z="164.8776" />
+								<Hotspot X="6949.311" Y="3289.713" Z="165.655" />
+								<Hotspot X="6929.372" Y="3117.919" Z="123.2541" />
+								<Hotspot X="7079.209" Y="3197.271" Z="156.2874" />
+								<Hotspot X="7245.572" Y="3050.336" Z="165.6132" />
+								<Hotspot X="7309.112" Y="3176.075" Z="143.3992" />
+								<Hotspot X="7164.64" Y="3277.109" Z="145.6098" />
+								<Hotspot X="7013.332" Y="3335.475" Z="164.8776" />
 							</Hotspots>
 						</GrindArea>  
 					</SetGrindArea>
 					<GrindTo Condition="!Me.HasAura(174958)" GoalText="Run 'em over!"  />
 				</If>
-			<!-- Then do it again! -->
+				<!-- Then do it again! -->
 			</While>
 		</If>
-		
-	<!-- We're done, now lets turn them in! -->
-	<If Condition="HasQuest(36697) &amp;&amp; IsQuestCompleted(36697)" >
-		<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
-		<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
-		<TurnIn QuestId="36697" QuestName="Assault on Magnarok" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
-	</If>
-<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+
+		<!-- We're done, now lets turn them in! -->
+		<If Condition="HasQuest(36697) &amp;&amp; IsQuestCompleted(36697)" >
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
+			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
+			<TurnIn QuestId="36697" QuestName="Assault on Magnarok" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
+		</If>
+		<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
 	</QuestOrder>
 </HBProfile>

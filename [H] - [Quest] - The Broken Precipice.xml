@@ -2,11 +2,11 @@
 	<Name>[H - Quest] - The Broken Precipice</Name>
 	<MinLevel>100</MinLevel>
 	<MaxLevel>1001</MaxLevel>
-	
+
 	<TargetElites>false</TargetElites>
-	
+
 	<MinDurability>0.3</MinDurability>
-	
+
 	<MinFreeBagSlots>3</MinFreeBagSlots>  
 
 	<SellGrey>true</SellGrey>
@@ -40,15 +40,15 @@
 	<Vendors>
 	</Vendors>
 	<!-- Quest Overrides -->
-	
+
 	<QuestOrder IgnoreCheckpoints="true">
 
 		<!-- The Broken Precipice -->
 		<If Condition="HasQuest(36694) &amp;&amp; !IsQuestCompleted(36694)" >
-		
+
 			<CustomBehavior File="Message" Text="Beginning Apex Daily: Broken Precipice" LogColor="Cyan" />
 			<While Condition="!IsObjectiveComplete(1, 36694)"> <!-- Keep looping through grabbing an acid trail buff and then killing with it until done -->
-				
+
 				<!-- Interact with Unearthed Reliquary, killing quest mobs along the way -->
 				<CustomBehavior File="Message" Text="Searching for Reliquaries" LogColor="Cyan" />
 				<CustomBehavior File="InteractWith" MobId="237453" ObjectType="GameObject" QuestId="36694" InteractByQuestFrameDisposition="Accept" >
@@ -95,24 +95,24 @@
 						<Hotspot X="4006.928" Y="7174.615" Z="69.80693" />
 					</HuntingGrounds>
 				</CustomBehavior>			
-			<!-- Then do it again! -->
+				<!-- Then do it again! -->
 			</While>
 		</If>
-	<!-- Turn in any fragments that we have -->
-	<While Condition="(GetItemCount(118099) &gt;= 20)" >
-		<CustomBehavior File="Message" Text="Turning in artifact fragment" LogColor="Cyan" />
-		<CustomBehavior File="InteractWith" MobId="87393" Range="5" X="3361.826" Y="6449.441" Z="19.31857" />
-        <CustomBehavior File="RunMacro" Macro="/script SelectGossipAvailableQuest(2)" WaitTime="2000" />
-        <CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteButton" WaitTime="2000" />
-        <CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" WaitTime="2000" />
-	</While>
-	
-	<!-- We're done, now lets turn them in! -->
-	<If Condition="HasQuest(36694) &amp;&amp; IsQuestCompleted(36694)" >
-		<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
-		<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
-		<TurnIn QuestId="36694" QuestName="Assault on the Broken Precipice" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
-	</If>
-<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+		<!-- Turn in any fragments that we have -->
+		<While Condition="(GetItemCount(118099) &gt;= 20)" >
+			<CustomBehavior File="Message" Text="Turning in artifact fragment" LogColor="Cyan" />
+			<CustomBehavior File="InteractWith" MobId="87393" Range="5" X="3361.826" Y="6449.441" Z="19.31857" />
+			<CustomBehavior File="RunMacro" Macro="/script SelectGossipAvailableQuest(2)" WaitTime="2000" />
+			<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteButton" WaitTime="2000" />
+			<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" WaitTime="2000" />
+		</While>
+
+		<!-- We're done, now lets turn them in! -->
+		<If Condition="HasQuest(36694) &amp;&amp; IsQuestCompleted(36694)" >
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
+			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
+			<TurnIn QuestId="36694" QuestName="Assault on the Broken Precipice" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
+		</If>
+		<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
 	</QuestOrder>
 </HBProfile>
