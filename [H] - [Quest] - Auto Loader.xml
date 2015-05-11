@@ -80,12 +80,6 @@
 	-->
 
 	<QuestOrder >
-
-
-
-
-
-
 		<!-- Pick up the Apexis daily quest if we don't have it already-->
 		<While Condition="(!HasQuest(36693) &amp;&amp; !IsQuestCompleted(36693)) &amp;&amp; (!HasQuest(36691) &amp;&amp; !IsQuestCompleted(36691)) &amp;&amp; (!HasQuest(36688) &amp;&amp; !IsQuestCompleted(36688)) &amp;&amp; (!HasQuest(36697) &amp;&amp; !IsQuestCompleted(36697)) &amp;&amp; (!HasQuest(36694) &amp;&amp; !IsQuestCompleted(36694)) &amp;&amp; (!HasQuest(36695) &amp;&amp; !IsQuestCompleted(36695)) &amp;&amp; (!HasQuest(36669) &amp;&amp; !IsQuestCompleted(36669)) &amp;&amp; (!HasQuest(36692) &amp;&amp; !IsQuestCompleted(36692)) &amp;&amp; (!HasQuest(36689) &amp;&amp; !IsQuestCompleted(36689))" >
 			<CustomBehavior File="Message" Text="Getting Apex daily quest from war planning table..." LogColor="Cyan" />
@@ -99,7 +93,7 @@
 		<!-- Magnarok -->
 		<If Condition="HasQuest(36697)" >
 			<If Condition="!HasQuest(38177)" >
-				<If Condition="!HasItem(122403)" >
+				<If Condition="!HasItem(122403) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
 					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
 						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122403" X="5591.72" Y="4578.257" Z="136.4454" />
 					</If>
@@ -120,7 +114,7 @@
 		<!-- Stonefury Cliffs -->
 		<If Condition="HasQuest(36669)" >
 			<If Condition="!HasQuest(38176)" >
-				<If Condition="!HasItem(122405)" >
+				<If Condition="!HasItem(122405) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
 					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
 						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122405" X="5591.72" Y="4578.257" Z="136.4454" />
 					</If>
@@ -141,7 +135,7 @@
 		<!-- Upper Skettis -->
 		<If Condition="HasQuest(36688)" >
 			<If Condition="!HasQuest(38186)" >
-				<If Condition="!HasItem(122408)" >
+				<If Condition="!HasItem(122408) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
 					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
 						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122408" X="5591.72" Y="4578.257" Z="136.4454" />
 					</If>
@@ -161,7 +155,7 @@
 		<!-- Pillars of Fate -->
 		<If Condition="HasQuest(36689)" >
 			<If Condition="!HasQuest(38185)" >
-				<If Condition="!HasItem(122411)" >
+				<If Condition="!HasItem(122411) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
 					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
 						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122411" X="5591.72" Y="4578.257" Z="136.4454" />
 					</If>
@@ -181,7 +175,7 @@
 		<!-- Mok'gol Watchpost -->
 		<If Condition="HasQuest(36693)" >
 			<If Condition="!HasQuest(38181)" >
-				<If Condition="!HasItem(122421)" >
+				<If Condition="!HasItem(122421) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
 					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
 						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122421" X="5591.72" Y="4578.257" Z="136.4454" />
 					</If>
@@ -201,7 +195,7 @@
 		<!-- Socrethar's Rise -->
 		<If Condition="HasQuest(36691)" >
 			<If Condition="!HasQuest(38183)" >
-				<If Condition="!HasItem(122416)" >
+				<If Condition="!HasItem(122416) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
 					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
 						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122416" X="5591.72" Y="4578.257" Z="136.4454" />
 					</If>
