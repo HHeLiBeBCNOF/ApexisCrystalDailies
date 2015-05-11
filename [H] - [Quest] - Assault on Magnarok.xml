@@ -90,7 +90,7 @@
 		</If>
 
 		<!-- We're done, now lets turn them in! -->
-		<If Condition="HasQuest(36697) &amp;&amp; IsQuestCompleted(36697)" >
+		<If Condition="(HasQuest(36697) &amp;&amp; IsQuestCompleted(36697)) || (HasQuest(38177) &amp;&amp; IsQuestCompleted(38177))" >
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
 			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
 			<TurnIn QuestId="36697" QuestName="Assault on Magnarok" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
