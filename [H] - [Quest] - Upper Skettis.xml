@@ -82,6 +82,6 @@
 			<TurnIn QuestId="38186" QuestName="Missive: Assault on Skettis" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
 			</If>
 		</If>
-		<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+		<CustomBehavior File="HBRelogSkip" />
 	</QuestOrder>
 </HBProfile>
