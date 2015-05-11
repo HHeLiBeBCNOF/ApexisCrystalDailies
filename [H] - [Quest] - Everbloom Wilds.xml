@@ -105,6 +105,6 @@
 			</If>
 
 		</If>
-		<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+		<CustomBehavior File="HBRelogSkip" />
 	</QuestOrder>
 </HBProfile>
