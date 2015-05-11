@@ -1,0 +1,82 @@
+<HBProfile>
+	<Name>[H - Quest] - Mok'gol Watchpost</Name>
+	<MinLevel>100</MinLevel>
+	<MaxLevel>1001</MaxLevel>
+	
+	<TargetElites>false</TargetElites>
+	
+	<MinDurability>0.3</MinDurability>
+	
+	<MinFreeBagSlots>3</MinFreeBagSlots>  
+
+	<SellGrey>true</SellGrey>
+	<SellWhite>true</SellWhite>
+	<SellGreen>true</SellGreen>
+	<SellBlue>false</SellBlue>
+	<SellPurple>false</SellPurple>
+
+	<MailGrey>false</MailGrey>
+	<MailWhite>true</MailWhite>
+	<MailGreen>true</MailGreen>
+	<MailBlue>true</MailBlue>
+	<MailPurple>true</MailPurple>
+
+	<AvoidMobs>
+		<Mob Name="Highmaul Guard" Entry="87221" />
+		<Mob Name="Direfang Alpha" Entry="86932" />
+		<Mob Name="Direfang Prowler" Entry="86931" />
+		<Mob Name="Marsh Anaconda" Entry="87039" />
+		<Mob Name="Deadly Gloomstalker" Entry="86773" />
+	</AvoidMobs>
+
+	<Blackspots>
+		<Blackspot X="3522.76" Y="6739.552" Z="9.27257" />
+	</Blackspots>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+		<Vendor Name="Rizmax Copperwattz" Entry="87396" Type="Repair" X="3325.174" Y="6443.257" Z="16.31569" />
+	</Vendors>
+	
+	<!-- 
+		<PickUp QuestName="Assault on Mok'gol Watchpost" QuestId="36693" GiverName="" GiverId="" />
+		<Objective QuestName="Assault on Mok'gol Watchpost" QuestId="36693" Type="KillMob" MobId="86624" KillCount="1" />
+		<TurnIn QuestName="Assault on Mok'gol Watchpost" QuestId="36693" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" />
+
+		<GameObject Name="Stolen Goods" Entry="237263" X="3479.998" Y="6835.752" Z="3.995193" />
+		<GameObject Name="Stolen Goods" Entry="237263" X="3465.313" Y="6891.558" Z="6.028689" />
+		<GameObject Name="Stolen Goods" Entry="237263" X="3522.138" Y="6789.504" Z="2.895799" />
+		<GameObject Name="Stolen Goods" Entry="237263" X="3511.23" Y="6947.446" Z="28.19118" />
+		<GameObject Name="Stolen Goods" Entry="237263" X="3522.76" Y="6739.552" Z="9.27257" /> - Gets hung up on wall - blackspotting
+		
+		<WoWItem Name="Secret Meeting Details" Entry="120290" />
+			
+	
+	-->
+	
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Beginning Apex Daily: Mok'gol Watchpost" LogColor="Cyan" />
+		<While Condition="HasQuest(36693) &amp;&amp; !IsQuestCompleted(36693)" >
+			
+				<CustomBehavior File="InteractWith" MobId="237263" ObjectType="GameObject" QuestId="36693" PreInteractMountStrategy="DismountOrCancelShapeshift" InteractByQuestFrameDisposition="Accept" >
+					<HuntingGrounds>
+						<Hotspot X="3469.78" Y="6861.467" Z="3.070986" />
+						<Hotspot X="3537.745" Y="6747.625" Z="6.699275" />
+						<Hotspot X="3600.267" Y="6704.172" Z="11.87251" />
+						<Hotspot X="3602.515" Y="6838.987" Z="16.88023" />
+						<Hotspot X="3540.747" Y="6901.51" Z="20.08891" />
+					</HuntingGrounds>
+				</CustomBehavior>			
+		</While>
+		
+		<!-- We're done, now lets turn them in! -->
+		<If Condition="HasQuest(36693) &amp;&amp; IsQuestCompleted(36693)" >
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
+			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
+			<TurnIn QuestId="36693" QuestName="Assault on Mok'gol Watchpost" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
+		</If>
+<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+	</QuestOrder>
+</HBProfile>

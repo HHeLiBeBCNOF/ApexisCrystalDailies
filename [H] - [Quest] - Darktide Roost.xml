@@ -1,0 +1,134 @@
+<HBProfile>
+	<Name>[H - Quest] - Apex dailies</Name>
+	<MinLevel>100</MinLevel>
+	<MaxLevel>1001</MaxLevel>
+	
+	<TargetElites>false</TargetElites>
+	
+	<MinDurability>0.3</MinDurability>
+	
+	<MinFreeBagSlots>3</MinFreeBagSlots>  
+
+	<SellGrey>true</SellGrey>
+	<SellWhite>true</SellWhite>
+	<SellGreen>true</SellGreen>
+	<SellBlue>false</SellBlue>
+	<SellPurple>false</SellPurple>
+
+	<MailGrey>false</MailGrey>
+	<MailWhite>true</MailWhite>
+	<MailGreen>true</MailGreen>
+	<MailBlue>true</MailBlue>
+	<MailPurple>true</MailPurple>
+
+	<AvoidMobs>
+		<Mob Name="Darktide Bomb Bot" Entry="78822" />
+	</AvoidMobs>
+
+	<Blackspots>
+	</Blackspots>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+	</Vendors>
+	<!-- Quest Overrides -->
+	
+	<QuestOrder IgnoreCheckpoints="true">
+		<!-- Apex Daily Quest IDs
+			36697 - Magnarok
+			36694 - Broken Precipice
+			36695 - Everbloom Wilds
+			36669 - Stonefury Cliffs
+			36692 - Darktide Roost
+
+		-->
+		
+		<!-- Darktide Roost -->
+		<If Condition="HasQuest(36692) &amp;&amp; !IsQuestCompleted(36692)" >
+		
+			<CustomBehavior File="Message" Text="Beginning Apex Daily: Darktide Roost" LogColor="Cyan" />
+			
+			<SetGrindArea>
+				<GrindArea>
+					<Factions>1711 1712 16</Factions>
+					<Hotspots>
+						<Hotspot X="-1152.127" Y="-1779.344" Z="8.196811" />
+						<Hotspot X="-1151.5" Y="-1739.191" Z="7.360145" />
+						<Hotspot X="-1163.126" Y="-1700.136" Z="8.206305" />
+						<Hotspot X="-1187.693" Y="-1667.948" Z="12.22746" />
+						<Hotspot X="-1218.058" Y="-1640.898" Z="11.18682" />
+						<Hotspot X="-1243.144" Y="-1608.78" Z="8.838257" />
+						<Hotspot X="-1269.814" Y="-1578.176" Z="7.361517" />
+						<Hotspot X="-1301.156" Y="-1552.258" Z="3.090924" />
+						<Hotspot X="-1326.868" Y="-1521.006" Z="3.680321" />
+						<Hotspot X="-1348.487" Y="-1486.268" Z="7.328688" />
+						<Hotspot X="-1384.71" Y="-1466.751" Z="7.426931" />
+						<Hotspot X="-1425.632" Y="-1470.9" Z="6.117974" />
+						<Hotspot X="-1451.922" Y="-1501.053" Z="7.521191" />
+						<Hotspot X="-1473.122" Y="-1535.724" Z="8.304622" />
+						<Hotspot X="-1490.35" Y="-1572.36" Z="8.069069" />
+						<Hotspot X="-1507.051" Y="-1609.793" Z="7.695494" />
+						<Hotspot X="-1538.332" Y="-1636.485" Z="8.206443" />
+						<Hotspot X="-1538.302" Y="-1677.064" Z="5.73991" />
+						<Hotspot X="-1545.661" Y="-1717.075" Z="7.531097" />
+						<Hotspot X="-1562.908" Y="-1753.234" Z="7.594744" />
+						<Hotspot X="-1568.061" Y="-1793.117" Z="12.04828" />
+						<Hotspot X="-1570.225" Y="-1833.371" Z="8.627732" />
+						<Hotspot X="-1577.719" Y="-1873.03" Z="7.992853" />
+						<Hotspot X="-1593.376" Y="-1910.554" Z="8.379824" />
+						<Hotspot X="-1594.687" Y="-1950.756" Z="16.46214" />
+						<Hotspot X="-1572.026" Y="-1982.404" Z="27.52344" />
+						<Hotspot X="-1540.012" Y="-1957.841" Z="32.63886" />
+						<Hotspot X="-1522.05" Y="-1921.934" Z="33.00141" />
+						<Hotspot X="-1492.885" Y="-1945.456" Z="49.57054" />
+						<Hotspot X="-1455.474" Y="-1954.449" Z="60.91497" />
+						<Hotspot X="-1429.563" Y="-1923.258" Z="68.57458" />
+						<Hotspot X="-1420.067" Y="-1883.636" Z="75.68723" />
+						<Hotspot X="-1419.37" Y="-1843.558" Z="79.27196" />
+						<Hotspot X="-1387.789" Y="-1855.484" Z="100.9309" />
+						<Hotspot X="-1354.666" Y="-1867.514" Z="119.9714" />
+						<Hotspot X="-1352.288" Y="-1827.683" Z="128.1031" />
+						<Hotspot X="-1377.089" Y="-1795.035" Z="128.6007" />
+						<Hotspot X="-1573.568" Y="-1995.681" Z="28.76942" />
+						<Hotspot X="-1546.052" Y="-2024.686" Z="31.92279" />
+						<Hotspot X="-1531.438" Y="-2062.223" Z="33.57758" />
+						<Hotspot X="-1494.041" Y="-2078.274" Z="34.2953" />
+						<Hotspot X="-1460.691" Y="-2054.405" Z="35.645" />
+						<Hotspot X="-1376.827" Y="-2014.478" Z="1.620031" />
+						<Hotspot X="-1336.991" Y="-2013.833" Z="7.348364" />
+						<Hotspot X="-1308.123" Y="-2041.616" Z="6.725655" />
+						<Hotspot X="-1267.717" Y="-2048.538" Z="7.358913" />
+						<Hotspot X="-1230.136" Y="-2033.092" Z="4.909482" />
+						<Hotspot X="-1189.266" Y="-2034.856" Z="4.814271" />
+						<Hotspot X="-1167.989" Y="-2000.899" Z="8.053616" />
+						<Hotspot X="-1181.487" Y="-1963.203" Z="6.427087" />
+						<Hotspot X="-1149.279" Y="-1938.831" Z="3.443345" />
+						<Hotspot X="-1141.727" Y="-1899.047" Z="5.549729" />
+						<Hotspot X="-1116.634" Y="-1867.352" Z="8.073674" />
+						<Hotspot X="-1108.6" Y="-1827.58" Z="8.340528" />
+						<Hotspot X="-1104.978" Y="-1787.393" Z="7.899583" />
+						<Hotspot X="-1135.292" Y="-1760.184" Z="7.454727" />
+						<Hotspot X="-1153.657" Y="-1724.032" Z="5.884435" />
+						<Hotspot X="-1175.273" Y="-1690.327" Z="10.35536" />
+						<Hotspot X="-1197.084" Y="-1656.318" Z="11.01638" />
+						<Hotspot X="-1219.168" Y="-1621.883" Z="7.845561" />
+						<Hotspot X="-1242.772" Y="-1588.954" Z="7.395076" />
+						<Hotspot X="-1280.179" Y="-1572.775" Z="7.35952" />
+						<Hotspot X="-1320.289" Y="-1574.265" Z="2.956794" />	
+					</Hotspots>
+				</GrindArea>  
+			</SetGrindArea>
+			<GrindTo Condition="IsObjectiveComplete(1, 36692)" GoalText="Assaulting Darktide Roost!"  />
+		</If>
+	
+	<!-- We're done, now lets turn them in! -->
+	<If Condition="HasQuest(36692) &amp;&amp; IsQuestCompleted(36692)" >
+		<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
+		<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
+		<TurnIn QuestId="36692" QuestName="Assault on the Darktide Roost" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
+	</If>
+<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+	</QuestOrder>
+</HBProfile>

@@ -1,0 +1,106 @@
+<HBProfile>
+	<Name>[H - Quest] - Assault on Everbloom Wilds</Name>
+	<MinLevel>100</MinLevel>
+	<MaxLevel>1001</MaxLevel>
+	
+	<TargetElites>false</TargetElites>
+	
+	<MinDurability>0.3</MinDurability>
+	
+	<MinFreeBagSlots>3</MinFreeBagSlots>  
+
+	<SellGrey>true</SellGrey>
+	<SellWhite>true</SellWhite>
+	<SellGreen>true</SellGreen>
+	<SellBlue>false</SellBlue>
+	<SellPurple>false</SellPurple>
+
+	<MailGrey>false</MailGrey>
+	<MailWhite>true</MailWhite>
+	<MailGreen>true</MailGreen>
+	<MailBlue>true</MailBlue>
+	<MailPurple>true</MailPurple>
+
+	<AvoidMobs>
+
+	</AvoidMobs>
+
+	<Blackspots>
+
+	</Blackspots>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+	</Vendors>
+	<!-- Quest Overrides -->
+	
+	<QuestOrder IgnoreCheckpoints="true">
+		<!-- Apex Daily Quest IDs
+			36697 - Magnarok
+			36694 - Broken Precipice
+			36695 - Everbloom Wilds
+			
+		-->
+		
+		<!-- Everbloom Wilds -->
+		<If Condition="HasQuest(36695) &amp;&amp; !IsQuestCompleted(36695)" >
+		
+			<CustomBehavior File="Message" Text="Beginning Apex Daily: Everbloom Wilds" LogColor="Cyan" />
+			<While Condition="!IsObjectiveComplete(1, 36695)"> 
+			
+				<CustomBehavior File="Message" Text="Chucking rocks at birds" LogColor="Cyan" />
+				<CustomBehavior File="InteractWith" MobId="88592" QuestId="36695" InteractByQuestFrameDisposition="Accept" Range="20" >
+					<HuntingGrounds>
+							<Hotspot X="7194.83" Y="376.3352" Z="114.5417" />
+							<Hotspot X="7192.285" Y="335.8515" Z="118.7385" />
+							<Hotspot X="7225.088" Y="312.539" Z="115.9136" />
+							<Hotspot X="7265.647" Y="311.7463" Z="114.6114" />
+							<Hotspot X="7302.912" Y="329.4508" Z="114.751" />
+							<Hotspot X="7344.337" Y="329.7276" Z="118.3251" />
+							<Hotspot X="7380.374" Y="310.7715" Z="114.1255" />
+							<Hotspot X="7419.637" Y="303.1302" Z="111.3465" />
+							<Hotspot X="7459.674" Y="299.9517" Z="106.5826" />
+							<Hotspot X="7499.756" Y="301.7167" Z="107.2102" />
+							<Hotspot X="7532.025" Y="326.0806" Z="106.0636" />
+							<Hotspot X="7572.492" Y="332.101" Z="112.6608" />
+							<Hotspot X="7612.542" Y="334.9212" Z="120.3199" />
+							<Hotspot X="7652.236" Y="342.2269" Z="125.1049" />
+							<Hotspot X="7690.316" Y="354.4095" Z="126.8032" />
+							<Hotspot X="7669.525" Y="389.1225" Z="128.4725" />
+							<Hotspot X="7629.924" Y="387.8871" Z="122.896" />
+							<Hotspot X="7590.616" Y="378.885" Z="119.5251" />
+							<Hotspot X="7551.778" Y="369.4386" Z="111.164" />
+							<Hotspot X="7511.728" Y="364.7564" Z="107.1439" />
+							<Hotspot X="7471.682" Y="362.5499" Z="107.001" />
+							<Hotspot X="7431.65" Y="359.121" Z="110.832" />
+							<Hotspot X="7391.01" Y="357.2536" Z="114.0684" />
+							<Hotspot X="7353.676" Y="371.6169" Z="115.7058" />
+							<Hotspot X="7314.451" Y="381.2464" Z="114.9674" />
+							<Hotspot X="7274.316" Y="392.2123" Z="113.7257" />
+							<Hotspot X="7235.921" Y="407.2867" Z="114.9514" />
+							<Hotspot X="7203.487" Y="431.6966" Z="113.2513" />
+							<Hotspot X="7196.28" Y="471.2332" Z="108.4883" />
+							<Hotspot X="7172.952" Y="503.3455" Z="101.1099" />
+							<Hotspot X="7137.472" Y="524.743" Z="98.74818" />
+							<Hotspot X="7099.475" Y="537.9822" Z="98.16032" />
+							<Hotspot X="7060.837" Y="545.4256" Z="90.11224" />
+							<Hotspot X="7035.889" Y="513.5748" Z="89.18924" />
+							<Hotspot X="7000.279" Y="495.4609" Z="91.93766" />
+							<Hotspot X="6959.56" Y="490.9877" Z="89.20043" />
+					</HuntingGrounds>
+				</CustomBehavior>			
+			<!-- Then do it again! -->
+			</While>
+		</If>
+	
+	<!-- We're done, now lets turn them in! -->
+	<If Condition="HasQuest(36695) &amp;&amp; IsQuestCompleted(36695)" >
+		<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
+		<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
+		<TurnIn QuestId="36695" QuestName="Assault on the Everbloom Wilds" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
+	</If>
+<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+	</QuestOrder>
+</HBProfile>

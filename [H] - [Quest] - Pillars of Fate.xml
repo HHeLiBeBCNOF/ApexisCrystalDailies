@@ -1,0 +1,59 @@
+<HBProfile>
+	<Name>[H - Quest] - Pillars of Fate</Name>
+	<MinLevel>100</MinLevel>
+	<MaxLevel>1001</MaxLevel>
+	
+	<TargetElites>false</TargetElites>
+	
+	<MinDurability>0.3</MinDurability>
+	
+	<MinFreeBagSlots>3</MinFreeBagSlots>  
+
+	<SellGrey>true</SellGrey>
+	<SellWhite>true</SellWhite>
+	<SellGreen>true</SellGreen>
+	<SellBlue>false</SellBlue>
+	<SellPurple>false</SellPurple>
+
+	<MailGrey>false</MailGrey>
+	<MailWhite>true</MailWhite>
+	<MailGreen>true</MailGreen>
+	<MailBlue>true</MailBlue>
+	<MailPurple>true</MailPurple>
+
+	<AvoidMobs>
+		<Mob Name="Darktide Bomb Bot" Entry="78822" />
+	</AvoidMobs>
+
+	<Blackspots>
+	</Blackspots>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+	</Vendors>
+	
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Beginning Apex Daily: Pillars of Fate" LogColor="Cyan" />
+		<While Condition="HasQuest(36689) &amp;&amp; !IsQuestCompleted(36689)" >
+		
+
+			<CustomBehavior File="InteractWith" MobId="85977" ObjectType="GameObject" QuestId="36689" Range="1" >
+				<HuntingGrounds>
+					<Hotspot X="273.3856" Y="368.899" Z="101.3153" />
+					<Hotspot X="142.0235" Y="248.6468" Z="105.4805" />
+					<Hotspot X="65.02885" Y="193.0272" Z="123.4145" />
+				</HuntingGrounds>
+			</CustomBehavior>
+		</While>
+		
+		<!-- We're done, now lets turn them in! -->
+		<If Condition="HasQuest(36689) &amp;&amp; IsQuestCompleted(36689)" >
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
+			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
+			<TurnIn QuestId="36689" QuestName="Assault on Pillars of Fate" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
+		</If>
+<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+	</QuestOrder>
+</HBProfile>

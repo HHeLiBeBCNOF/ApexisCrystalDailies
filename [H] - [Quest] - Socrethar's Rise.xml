@@ -1,0 +1,70 @@
+<HBProfile>
+	<Name>[H - Quest] - Upper Skettis</Name>
+	<MinLevel>100</MinLevel>
+	<MaxLevel>1001</MaxLevel>
+	
+	<TargetElites>false</TargetElites>
+	
+	<MinDurability>0.3</MinDurability>
+	
+	<MinFreeBagSlots>3</MinFreeBagSlots>  
+
+	<SellGrey>true</SellGrey>
+	<SellWhite>true</SellWhite>
+	<SellGreen>true</SellGreen>
+	<SellBlue>false</SellBlue>
+	<SellPurple>false</SellPurple>
+
+	<MailGrey>false</MailGrey>
+	<MailWhite>true</MailWhite>
+	<MailGreen>true</MailGreen>
+	<MailBlue>true</MailBlue>
+	<MailPurple>true</MailPurple>
+
+	<AvoidMobs>
+		<Mob Name="Shadowglen Thornshooter" Entry="81502" />
+		<Mob Name="Shadowglen Spitter" Entry="81637" />
+		<Mob Name="Sargerei Demonlord" Entry="81543" />
+	</AvoidMobs>
+
+	<Blackspots>
+		<Blackspot X="-751.191" Y="-911.592" Z="121.0737" Radius="5"/>
+		<Blackspot X="-845.5746" Y="-920.6215" Z="114.2543" Radius="5"/>
+	</Blackspots>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+	</Vendors>
+	
+	<!-- 
+			<WoWUnit Name="Draenic Darkstone" Entry="85991" X="-751.191" Y="-911.592" Z="121.0737" /> - Unreachable, adding blackspot 
+			<WoWUnit Name="Draenic Darkstone" Entry="85991" X="-845.5746" Y="-920.6215" Z="114.2543" /> - Unreachable, adding blackspot
+			<WoWUnit Name="Draenic Darkstone" Entry="85991" X="-539.1441" Y="-1048.354" Z="111.3279" /> 
+			<WoWUnit Name="Draenic Darkstone" Entry="85991" X="-1022.957" Y="-732.1354" Z="151.0325" />
+				
+	-->
+	
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Beginning Apex Daily: Socrethar's Rise" LogColor="Cyan" />
+		<While Condition="HasQuest(36691) &amp;&amp; !IsQuestCompleted(36691)" >
+			<CustomBehavior File="InteractWith" MobId="85991" ObjectType="GameObject" QuestId="36691" InteractByQuestFrameDisposition="Accept">
+				<HuntingGrounds>
+					<Hotspot X="-1013.313" Y="-723.0705" Z="148.977" />
+					<Hotspot X="-920.0626" Y="-1208.371" Z="106.0583" />
+					<Hotspot X="-730.3031" Y="-1172.013" Z="75.54263" />
+					
+				</HuntingGrounds>
+			</CustomBehavior>
+		</While>
+		
+		<!-- We're done, now lets turn them in! -->
+		<If Condition="HasQuest(36691) &amp;&amp; IsQuestCompleted(36691)" >
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(110560)" WaitTime="2000" />
+			<CustomBehavior File="WaitTimer" WaitTime="5000" /> 
+			<TurnIn QuestId="36691" QuestName="Assault on Socrethar's Rise" TurnInName="Shadow Hunter Ukambe" TurnInId="78495" X="5573.493" Y="4597.967" Z="142.0461" />
+		</If>
+<!-- <CustomBehavior File="RunCode" Code="HBRelogApi.SkipCurrentTask(HBRelogApi.CurrentProfileName);" />  -->
+	</QuestOrder>
+</HBProfile>
