@@ -80,6 +80,9 @@
 	-->
 
 	<QuestOrder >
+	<If Condition="Me.IsAlliance">
+		<CustomBehavior File="HBRelogSkip" />
+	</If>
 		<!-- Pick up the Apexis daily quest if we don't have it already-->
 		<While Condition="(!HasQuest(36693) &amp;&amp; !IsQuestCompleted(36693)) &amp;&amp; (!HasQuest(36691) &amp;&amp; !IsQuestCompleted(36691)) &amp;&amp; (!HasQuest(36688) &amp;&amp; !IsQuestCompleted(36688)) &amp;&amp; (!HasQuest(36697) &amp;&amp; !IsQuestCompleted(36697)) &amp;&amp; (!HasQuest(36694) &amp;&amp; !IsQuestCompleted(36694)) &amp;&amp; (!HasQuest(36695) &amp;&amp; !IsQuestCompleted(36695)) &amp;&amp; (!HasQuest(36669) &amp;&amp; !IsQuestCompleted(36669)) &amp;&amp; (!HasQuest(36692) &amp;&amp; !IsQuestCompleted(36692)) &amp;&amp; (!HasQuest(36689) &amp;&amp; !IsQuestCompleted(36689))" >
 			<CustomBehavior File="Message" Text="Getting Apex daily quest from war planning table..." LogColor="Cyan" />
