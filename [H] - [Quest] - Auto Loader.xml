@@ -41,15 +41,16 @@
 	<!--
 		Notes
 			Apex Daily Quest IDs
-				36669 - Stonefury Cliffs
-				36688 - Upper Skettis
-				36689 - Pillars of Fate
-				36691 - Socrethar's Rise
-				36692 - Darktide Roost
-				36693 - Mok'gol Watchpost
-				36694 - Broken Precipice
-				36695 - Everbloom Wilds
-				36697 - Magnarok
+				36669 - Assault on Stonefury Cliffs
+				36688 - Assault on Skettis
+				36689 - Assault on Pillars of Fate
+				36690 - Assault on Lost Veil Anzu
+				36691 - Assault on Socrethar's Rise
+				36692 - Assault on Darktide Roost
+				36693 - Assault on Mok'gol Watchpost
+				36694 - Assault on Broken Precipice
+				36695 - Assault on Everbloom Wilds
+				36697 - Assault on Magnarok
 			
 			Missive Quest IDs
 				38176 - Missive: Assault on Stonefury Cliffs
@@ -80,12 +81,12 @@
 	-->
 
 	<QuestOrder >
-	<If Condition="Me.IsAlliance">
-		<CustomBehavior File="HBRelogSkip" />
-	</If>
+		<If Condition="Me.IsAlliance">
+			<CustomBehavior File="HBRelogSkip" />
+		</If>
 		<!-- Pick up the Apexis daily quest if we don't have it already-->
 		<While Condition="(!HasQuest(36693) &amp;&amp; !IsQuestCompleted(36693)) &amp;&amp; (!HasQuest(36691) &amp;&amp; !IsQuestCompleted(36691)) &amp;&amp; (!HasQuest(36688) &amp;&amp; !IsQuestCompleted(36688)) &amp;&amp; (!HasQuest(36697) &amp;&amp; !IsQuestCompleted(36697)) &amp;&amp; (!HasQuest(36694) &amp;&amp; !IsQuestCompleted(36694)) &amp;&amp; (!HasQuest(36695) &amp;&amp; !IsQuestCompleted(36695)) &amp;&amp; (!HasQuest(36669) &amp;&amp; !IsQuestCompleted(36669)) &amp;&amp; (!HasQuest(36692) &amp;&amp; !IsQuestCompleted(36692)) &amp;&amp; (!HasQuest(36689) &amp;&amp; !IsQuestCompleted(36689))" >
-			<CustomBehavior File="Message" Text="Getting Apex daily quest from war planning table..." LogColor="Cyan" />
+			<CustomBehavior File="Message" Text="Getting Apexis daily quest from war planning table..." LogColor="Cyan" />
 			<CustomBehavior File="InteractWith" MobId="236206" Range="5" WaitTime="2000"  X="5576.45" Y="4597.654" Z="143.2046"  />
 			<!-- War Planning Map (Level 3 Garrison)-->
 			<CustomBehavior File="Misc\RunLua" Lua="QuestChoiceFrameOption1.OptionButton:Click()" WaitTime="1000" />
@@ -93,29 +94,10 @@
 
 		<!-- Load the profile for today's Apexis Daily -->
 
-		<!-- Magnarok -->
-		<If Condition="HasQuest(36697)" >
-			<If Condition="!HasQuest(38177)" >
-				<If Condition="!HasItem(122403) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
-					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
-						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122403" X="5591.72" Y="4578.257" Z="136.4454" />
-					</If>
-					<If Condition="Me.MapId == 1330" > <!-- Level 2 Garrison -->
-						<CustomBehavior File="InteractWith" MobId="88228" InteractByBuyingItemId="122403" X="5591.561" Y="4579.132" Z="136.5882" />
-					</If>
-				</If>
-				<If Condition="HasItem(122403) &amp;&amp; !HasQuest(38177)" >
-					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(122403)" WaitTime="1000" />
-					<PickUp QuestName="Missive: Assault on Magnarok" QuestId="38177" GiverName="Scouting Missive: Magnarok" GiverType="Item" GiverId="122403" />
-				</If>
-			</If>
-			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Assault on Magnarok" RememberProfile="true" />
-		</If>
-		<!-- End Magnarok -->
-
-
 		<!-- Stonefury Cliffs -->
 		<If Condition="HasQuest(36669)" >
+			<CustomBehavior File="Message" Text="Picked up quest: Assault on Stonefury Cliffs" LogColor="Cyan" />
+			<CustomBehavior File="Message" Text="http://www.wowhead.com/quest=36669" LogColor="Cyan" />
 			<If Condition="!HasQuest(38176)" >
 				<If Condition="!HasItem(122405) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
 					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
@@ -135,8 +117,12 @@
 		</If>
 		<!-- End Stonefury Cliffs -->
 
-		<!-- Upper Skettis -->
+
+
+		<!-- Skettis -->
 		<If Condition="HasQuest(36688)" >
+			<CustomBehavior File="Message" Text="Picked up quest: Assault on Skettis" LogColor="Cyan" />
+			<CustomBehavior File="Message" Text="http://www.wowhead.com/quest=36688" LogColor="Cyan" />
 			<If Condition="!HasQuest(38186)" >
 				<If Condition="!HasItem(122408) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
 					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
@@ -151,12 +137,14 @@
 					<PickUp QuestName="Missive: Assault on Skettis" QuestId="38186" GiverName="Scouting Missive: Skettis" GiverType="Item" GiverId="122408" />
 				</If>
 			</If>
-			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Upper Skettis" RememberProfile="true" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Skettis" RememberProfile="true" />
 		</If>
-		<!-- End Upper Skettis -->
+		<!-- End Skettis -->
 
 		<!-- Pillars of Fate -->
 		<If Condition="HasQuest(36689)" >
+			<CustomBehavior File="Message" Text="Picked up quest: Assault on Pillars of Fate" LogColor="Cyan" />
+			<CustomBehavior File="Message" Text="http://www.wowhead.com/quest=36689" LogColor="Cyan" />
 			<If Condition="!HasQuest(38185)" >
 				<If Condition="!HasItem(122411) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
 					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
@@ -175,28 +163,33 @@
 		</If>		
 		<!-- End Pillars of Fate -->
 
-		<!-- Mok'gol Watchpost -->
-		<If Condition="HasQuest(36693)" >
-			<If Condition="!HasQuest(38181)" >
-				<If Condition="!HasItem(122421) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
+		<!-- Lost Veil Anzu -->
+		<If Condition="HasQuest(36690)" >
+			<CustomBehavior File="Message" Text="Picked up quest: Assault on Lost Veil Anzu" LogColor="Cyan" />
+			<CustomBehavior File="Message" Text="http://www.wowhead.com/quest=36690" LogColor="Cyan" />
+			<If Condition="!HasQuest(38184)" >
+				<If Condition="!HasItem(122413) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
 					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
-						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122421" X="5591.72" Y="4578.257" Z="136.4454" />
+						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122413" X="5591.72" Y="4578.257" Z="136.4454" />
 					</If>
 					<If Condition="Me.MapId == 1330" > <!-- Level 2 Garrison -->
-						<CustomBehavior File="InteractWith" MobId="88228" InteractByBuyingItemId="122421" X="5590.561" Y="4579.132" Z="136.5882" />
+						<CustomBehavior File="InteractWith" MobId="88228" InteractByBuyingItemId="122413" X="5591.561" Y="4579.132" Z="136.5882" />
 					</If>
 				</If>
-				<If Condition="HasItem(122421) &amp;&amp; !HasQuest(38181)" >
-					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(122421)" WaitTime="1000" />
-					<PickUp QuestName="Missive: Assault on Mok'gol Watchpost" QuestId="38181" GiverName="Scouting Missive: Mok'gol Watchpost" GiverType="Item" GiverId="122421" />
+				<If Condition="HasItem(122413) &amp;&amp; !HasQuest(38184)" >
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(122413)" WaitTime="1000" />
+					<PickUp QuestName="Missive: Assault on Lost Veil Anzu" QuestId="38184" GiverName="Scouting Missive: Lost Veil Anzu" GiverType="Item" GiverId="122413" />
 				</If>
 			</If>
-			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Mok'gol Watchpost" RememberProfile="true" />
+			<CustomBehavior File="Message" Text="There is currently no Profile for this quest. sorry" LogColor="Cyan" />
+			<!--<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Assault on Lost Veil Anzu" RememberProfile="true" />-->
 		</If>
-		<!-- End Mok'gol Watchpost -->
+		<!-- End Lost Veil Anzu -->
 
 		<!-- Socrethar's Rise -->
 		<If Condition="HasQuest(36691)" >
+			<CustomBehavior File="Message" Text="Picked up quest: Assault on Socrethar's Rise" LogColor="Cyan" />
+			<CustomBehavior File="Message" Text="http://www.wowhead.com/quest=36691" LogColor="Cyan" />
 			<If Condition="!HasQuest(38183)" >
 				<If Condition="!HasItem(122416) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
 					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
@@ -216,6 +209,51 @@
 		</If>
 		<!-- End Socrethar's Rise -->
 
+		<!-- Mok'gol Watchpost -->
+		<If Condition="HasQuest(36693)" >
+			<CustomBehavior File="Message" Text="Picked up quest: Assault on Mok'gol Watchpost" LogColor="Cyan" />
+			<CustomBehavior File="Message" Text="http://www.wowhead.com/quest=36693" LogColor="Cyan" />
+			<If Condition="!HasQuest(38181)" >
+				<If Condition="!HasItem(122421) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
+					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
+						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122421" X="5591.72" Y="4578.257" Z="136.4454" />
+					</If>
+					<If Condition="Me.MapId == 1330" > <!-- Level 2 Garrison -->
+						<CustomBehavior File="InteractWith" MobId="88228" InteractByBuyingItemId="122421" X="5590.561" Y="4579.132" Z="136.5882" />
+					</If>
+				</If>
+				<If Condition="HasItem(122421) &amp;&amp; !HasQuest(38181)" >
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(122421)" WaitTime="1000" />
+					<PickUp QuestName="Missive: Assault on Mok'gol Watchpost" QuestId="38181" GiverName="Scouting Missive: Mok'gol Watchpost" GiverType="Item" GiverId="122421" />
+				</If>
+			</If>
+			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Mok'gol Watchpost" RememberProfile="true" />
+		</If>
+		<!-- End Mok'gol Watchpost -->
+
+		<!-- Magnarok -->
+		<If Condition="HasQuest(36697)" >
+			<CustomBehavior File="Message" Text="Picked up quest: Assault on Magnarok" LogColor="Cyan" />
+			<CustomBehavior File="Message" Text="http://www.wowhead.com/quest=36697" LogColor="Cyan" />
+			<If Condition="!HasQuest(38177)" >
+				<If Condition="!HasItem(122403) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
+					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
+						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122403" X="5591.72" Y="4578.257" Z="136.4454" />
+					</If>
+					<If Condition="Me.MapId == 1330" > <!-- Level 2 Garrison -->
+						<CustomBehavior File="InteractWith" MobId="88228" InteractByBuyingItemId="122403" X="5591.561" Y="4579.132" Z="136.5882" />
+					</If>
+				</If>
+				<If Condition="HasItem(122403) &amp;&amp; !HasQuest(38177)" >
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(122403)" WaitTime="1000" />
+					<PickUp QuestName="Missive: Assault on Magnarok" QuestId="38177" GiverName="Scouting Missive: Magnarok" GiverType="Item" GiverId="122403" />
+				</If>
+			</If>
+			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Assault on Magnarok" RememberProfile="true" />
+		</If>
+		<!-- End Magnarok -->
+
 		<CustomBehavior File="HBRelogSkip" />
+
 	</QuestOrder>
 </HBProfile>
