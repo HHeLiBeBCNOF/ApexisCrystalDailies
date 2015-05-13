@@ -249,7 +249,7 @@
 			</If>
 			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Everbloom Wilds" RememberProfile="true" />
 		</If>
-		<!-- End Magnarok -->
+		<!-- End Everbloom Wilds -->
 
 		<!-- Magnarok -->
 		<If Condition="HasQuest(36697)" >
