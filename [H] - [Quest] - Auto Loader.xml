@@ -50,7 +50,7 @@
 				36692 - Assault on Darktide Roost
 				36693 - Assault on Mok'gol Watchpost
 				36694 - Assault on Broken Precipice
-				36695 - Assault on Everbloom Wilds
+				36695 - Assault on the Everbloom Wilds
 				36697 - Assault on Magnarok
 			
 			Missive Quest IDs
@@ -228,6 +228,28 @@
 			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Mok'gol Watchpost" RememberProfile="true" />
 		</If>
 		<!-- End Mok'gol Watchpost -->
+
+		<!-- Everbloom Wilds -->
+		<If Condition="HasQuest(36695)" >
+			<CustomBehavior File="Message" Text="Picked up quest: Assault on the Everbloom Wilds" LogColor="Cyan" />
+			<CustomBehavior File="Message" Text="http://www.wowhead.com/quest=36695" LogColor="Cyan" />
+			<If Condition="!HasQuest(38179)" >
+				<If Condition="!HasItem(122400) &amp;&amp; (GetCurrencyAmount(824) &gt;= 500)" >
+					<If Condition="Me.MapId == 1153" > <!-- Level 3 Garrison -->
+						<CustomBehavior File="InteractWith" MobId="79774" InteractByBuyingItemId="122400" X="5591.72" Y="4578.257" Z="136.4454" />
+					</If>
+					<If Condition="Me.MapId == 1330" > <!-- Level 2 Garrison -->
+						<CustomBehavior File="InteractWith" MobId="88228" InteractByBuyingItemId="122400" X="5591.561" Y="4579.132" Z="136.5882" />
+					</If>
+				</If>
+				<If Condition="HasItem(122400) &amp;&amp; !HasQuest(38179)" >
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(122400)" WaitTime="1000" />
+					<PickUp QuestName="Missive: Assault on the Everbloom Wilds" QuestId="38179" GiverName="Scouting Missive: Everbloom Wilds" GiverType="Item" GiverId="122400" />
+				</If>
+			</If>
+			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Everbloom Wilds" RememberProfile="true" />
+		</If>
+		<!-- End Magnarok -->
 
 		<!-- Magnarok -->
 		<If Condition="HasQuest(36697)" >
