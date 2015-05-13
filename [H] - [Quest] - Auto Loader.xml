@@ -157,7 +157,7 @@
 					<PickUp QuestName="Missive: Assault on Pillars of Fate" QuestId="38185" GiverName="Scouting Missive: Pillars of Fate" GiverType="Item" GiverId="122411" />
 				</If>
 			</If>
-			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Skettis" RememberProfile="true" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Pillars of Fate" RememberProfile="true" />
 		</If>		
 		<!-- End Pillars of Fate -->
 
