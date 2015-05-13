@@ -36,6 +36,7 @@
 	</Mailboxes>
 
 	<Vendors>
+	<Vendor Name="Rizmax Copperwattz" Entry="87396" Type="Repair" X="3325.174" Y="6443.257" Z="16.31485" /> <!-- Ruins of Na'gwa -->
 	</Vendors>
 
 	<!--
@@ -93,7 +94,6 @@
 		</While>
 
 		<!-- Load the profile for today's Apexis Daily -->
-
 		<!-- Stonefury Cliffs -->
 		<If Condition="HasQuest(36669)" >
 			<CustomBehavior File="Message" Text="Picked up quest: Assault on Stonefury Cliffs" LogColor="Cyan" />
@@ -116,8 +116,6 @@
 			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Stonefury Cliffs" RememberProfile="true" />
 		</If>
 		<!-- End Stonefury Cliffs -->
-
-
 
 		<!-- Skettis -->
 		<If Condition="HasQuest(36688)" >
@@ -159,7 +157,7 @@
 					<PickUp QuestName="Missive: Assault on Pillars of Fate" QuestId="38185" GiverName="Scouting Missive: Pillars of Fate" GiverType="Item" GiverId="122411" />
 				</If>
 			</If>
-			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Upper Skettis" RememberProfile="true" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H] - [Quest] - Skettis" RememberProfile="true" />
 		</If>		
 		<!-- End Pillars of Fate -->
 
